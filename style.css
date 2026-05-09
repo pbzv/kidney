@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 @font-face {
     font-family: "Diwanii";
     src: url(bfantezy.woff2);
+}
+
+:root {
+    --backgroundColour: radial-gradient(circle at top, #0f2a24, #020617) fixed;
+    --header-backgroundColour: rgba(11, 34, 37);
+    --article-backgroundColour: rgba(11, 34, 37, 75%);
+    --header-fontColour: #d4d4d4;
+    --main-fontColour1: #67e3a3;
+    --main-fontColour2: #fafafa;
+
 }
 
 *, *::before, *::after {
@@ -12,28 +21,27 @@
     direction: rtl;
 }
 body {
-    background: radial-gradient(circle at top, #0f2a24, #020617) fixed;
     display: flex;
     flex-direction: column;
+    background: var(--backgroundColour);
 }
 
 header {
-    margin: 2rem;
-    margin-right: 5rem;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-backgroundColour);
+    border-bottom: 1px solid rgba(255, 255, 255, 15%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 25%);
 }
 
 header > .header {
-    font-size: 3.2rem;
+    margin: 1rem;
+    margin-right: 2rem;
+    font-size: 2.8rem;
     font-family: 'Amiri', sans-serif;
-    color: #d4d4d4;
+    color: var(--header-fontColour);
     font-style: italic;
-}
-
-header > p {
-    margin: 1.5em;
-    color: #d4d4d4;
-    font-size: 1.4rem;
 }
 
 main {
@@ -51,17 +59,17 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 2.3rem;
+    font-size: clamp(1.5rem, 7.5vw, 2.3rem);
     font-family: 'Amiri', sans-serif;
     font-style: italic;
 }
 
 #Head > h1[class="main-header"]{
-    color: #67e3a3;
+    color: var(--main-fontColour1);
 }
 
 #Head > h1[class="main-header-caption"]{
-    color: #fafafa;
+    color: var(--main-fontColour2);
 }
 
 #appointment {
@@ -72,7 +80,7 @@ main {
     max-width: 700px;
     width: calc(90% - 2em);
     height: 500px;
-    background-color: rgba(11, 34, 37, 75%);
+    background-color: var(--article-backgroundColour);
     backdrop-filter: blur(20px);
     border-radius: .75em;
     border: 1px solid rgba(255, 255, 255, 15%);
@@ -81,36 +89,36 @@ main {
     flex-direction: column;
 }
 
-#appointment > .main-header {
+article > .main-header {
     font-size: 3.2rem;
-    color: #d4d4d4;
-    position: relative;
-    display: block;
-    top: 5%; right: 5%;
     font-family: 'Amiri', sans-serif;
     font-style: italic;
+    display: block;
+    position: relative;
+    top: 5%; right: 5%;
+    color: #d4d4d4;
 }
 
-#appointment > hr {
-    border: 1px solid rgba(255, 255, 255, 50%);
+article > hr {
     position: relative;
     top: 10%;
+    border: 1px solid rgba(255, 255, 255, 50%);
 }
 
 table {
     position: relative;
     top: 15%;
     width: 100%;
-    overflow: hidden;
     border-radius: 0.75em;
+    overflow: hidden;
 }
 
 thead {
     font-size: 1.5rem;
     font-family: 'Amiri', sans-serif;
     font-style: italic;
-    background: rgba(148, 163, 184, 0.10);
     color: #fafafa;
+    background: rgba(148, 163, 184, 0.10);
 }
 
 th, td {
@@ -146,4 +154,21 @@ tbody tr:hover {
     color: #ef4444;
     font-weight: bold;
     font-size: 1.3rem;
+}
+
+#prescription {
+    position: relative;
+    top: 28em;
+    padding: .75em;
+    margin: .75em;
+    max-width: 700px;
+    width: calc(90% - 2em);
+    height: 500px;
+    background-color: var(--article-backgroundColour);
+    backdrop-filter: blur(20px);
+    border-radius: .75em;
+    border: 1px solid rgba(255, 255, 255, 15%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 25%);
+    display: flex;
+    flex-direction: column;
 }

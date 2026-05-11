@@ -11,57 +11,44 @@
     </head>
     <body>
         <header>
-            <h1 class="header">مشروع الكلى</h1>
+            <h1>مشروع الكلى</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
         </header>
-        <main>
-            <div id="Head">
-                <h1 class="main-header">رفيق الكلى</h1> 
-                <h1 class="main-header-caption">معاً ضد المستحيل</h1>
+        <div id="Head">
+            <h1 class="main-header">رفيق الكلى</h1> 
+            <h1 class="main-header-caption">معاً ضد المستحيل</h1>
+        </div>
+
+        <main class="cards">
+            <div class="card" id="appointment">
+                <h1 class="title">الجلسة القادمة</h1>
+                <div class="info">
+                    <h2 class="time-left">4:30 مساءً</h2>
+                    <p class="date">الاثنين • 10 مايو</p>
+                </div>
+            </div>
+            <div class="card" id="prescription">
+                <h1 class="title">الوصفة الطبية</h1>
+                <div class="info">
+                    <p class="medicine">الدواء: Paracetamol</p>
+                    <p class="dosage">الجرعة: 500 ملغ</p>
+                </div>
+            </div>
+            <div class="card" id="notes">
+                <h1 class="title">ملاحظات الطبيب</h1>
+                <div class="info">
+                    <p class="diagnosis">تجنب الأطعمة المالحة، اشرب الكثير من الماء، وابق نشيطًا!</p>
+                </div>
             </div>
 
-            <article id="appointment">
-                <h1 class="main-header">جلسات الغسيل</h1>
-                <hr>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>الاسم</th>
-                            <th>العمر</th>
-                            <th>الموعد</th>
-                            <th>الحالة</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>أحمد علي</td>
-                            <td>45</td>
-                            <td>10:00 صباحاً</td>
-                            <td class="ok">مستقر</td>
-                        </tr>
-
-                        <tr>
-                            <td>سارة محمد</td>
-                            <td>32</td>
-                            <td>11:30 صباحاً</td>
-                            <td class="warn">مراقبة</td>
-                        </tr>
-
-                        <tr>
-                            <td>خالد يوسف</td>
-                            <td>58</td>
-                            <td>01:00 ظهراً</td>
-                            <td class="danger">حرجة</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </article>
-
-            <article id="prescription">
-                <h1 class="main-header">وصفات طبية</h1>
-                <hr>
-                
-            </article>
+            <div class="card" id="alerts">
+                <h1 class="title">التذكير بشرب السوائل</h1>
+                <div class="info">
+                    <p class="alert">تذكير: موعد الفحص القادم بعد 3 أيام!</p>
+                </div>
+            </div>
         </main>
+        <br>
+    <script src="index.js"></script>
     </body>
 </html>

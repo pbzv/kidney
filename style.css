@@ -164,3 +164,64 @@ header > svg:active {
 #alerts {
     margin-top: 5em;
 }
+
+/* تنسيق الأيقونة لتكون قابلة للضغط */
+.menu-icon {
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* ربط الأيقونة بنفس تنسيقات الـ SVG القديمة التي كانت لديك */
+.menu-icon svg {
+    width: 2rem;
+    height: 2rem;
+    fill: var(--header-textColour);
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: transform 0.3s ease;
+}
+
+/* تنسيق القائمة المنسدلة */
+.nav-menu {
+    position: absolute;
+    top: 5rem; /* تظهر أسفل الهيدر */
+    left: 2rem;
+    background: var(--header-theme);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    width: 200px;
+    display: none; /* مخفية افتراضياً */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.nav-menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--main-textColour2);
+    text-decoration: none;
+    font-family: 'Amiri', sans-serif;
+    transition: background 0.2s;
+}
+
+.nav-menu ul li a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--main-textColour1);
+}
+
+/* السحر هنا: عند الضغط على التشيك بوكس، أظهر القائمة */
+#menu-toggle:checked ~ .nav-menu {
+    display: block;
+}
+
+/* حركة بسيطة للأيقونة عند فتح القائمة */
+#menu-toggle:checked ~ .menu-icon svg {
+    transform: rotate(90deg);
+    fill: var(--main-textColour1);
+}

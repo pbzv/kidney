@@ -135,8 +135,14 @@ header > .logo {
     transition: background 0.2s;
 }
 
+
 .nav-menu ul li a:hover {
     background: rgba(255, 255, 255, 0.1);
+    color: var(--main-textColour1);
+}
+
+.nav-menu ul li a[href="#"]{
+    font-size: 1.3rem;
     color: var(--main-textColour1);
 }
 
@@ -147,6 +153,7 @@ header > .logo {
     transform: translateY(0);
     pointer-events: auto;
 }
+
 
 #menu-toggle:checked ~ .menu-icon svg {
     transform: rotate(90deg);

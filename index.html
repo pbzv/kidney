@@ -61,7 +61,24 @@
                 <h1 class="title">التذكير بشرب السوائل</h1>
                 <div class="info">
                     <p class="alert">لتفعيل التذكير بشرب السوائل انقر الزر </p>
-                    
+                    <article class="reminder-settings">
+                        <section class="wakeup-time">
+                            <label for="wakeup">وقت الاستيقاظ</label>
+                            <input type="time" id="wakeuptime" name="wakeup" required>
+                        </section>
+                        <section class="bedtime">
+                            <label for="bedtime">وقت النوم</label>
+                            <input type="time" id="bedtime" name="bedtime" required>
+                        </section>
+                        <div class="buttons">
+                            <button class="reject-btn">
+                                <span>إلغاء</span>
+                            </button>
+                            <button class="submit-btn">
+                                <span>تفعيل التذكير</span>
+                            </button>
+                        </div>
+                    </article>
                     <label class="switch">
                         <input id="toggle" type="checkbox">
                         <span class="slider"></span>

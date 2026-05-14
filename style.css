@@ -229,7 +229,7 @@ header > .logo {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     margin-top: 1.5rem;
 }
@@ -434,4 +434,14 @@ input[type="time"]:focus {
 .switch.visible,
 .alert.visible {
     display: inline-block;
+}
+
+#error_msg {
+    position: relative;
+    font-size: 1.4rem;
+    font-family: 'Amiri', sans-serif;
+    font-style: italic;
+    color: #ff6868;
+    display: none;
+    top: -30px;
 }

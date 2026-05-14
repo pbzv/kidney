@@ -18,6 +18,7 @@ export class Liquid_ReminderApp {
         this.Bedtime      = document.querySelector('#bedtime');
         this.SubmitBtn    = document.querySelector('.submit-btn');
         this.RejectBtn    = document.querySelector('.reject-btn');
+        this.Error_msg    = document.querySelector("#error_msg");
         this.wakeupTimeValue = null;
         this.bedtimeValue    = null;
     }
@@ -39,7 +40,6 @@ export class Liquid_ReminderApp {
             this.Settings.style.display = 'none';
             this.SwitchLabel.classList.add('visible');
             this.Alert_note.classList.add('visible');
-
         }, 400);
     }
 
@@ -68,33 +68,69 @@ export class Liquid_ReminderApp {
 
     showToast(message, color = '#a81638') {
         const toast = document.createElement('div');
+        const toastbtn = document.createElement('button');
+        toastbtn.textContent = "تأكيد";
+
         toast.style.cssText = `
             width: 350px; height: 200px;
             background-color: ${color}; color: #f2e5c5;
             border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.2), 0 0 5px #d03156;
             position: fixed; top: 50%; right: 50%; transform: translate(50%, -50%); z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: space-around;
             font-size: 2rem; font-family:'Amiri', sans-serif; font-style: italic; text-align: center;
             opacity: 1; transition: opacity 0.4s ease;
         `;
-        toast.textContent = message;
+
+        toastbtn.style.cssText = `
+            display: block; position: relative;
+            width: 95px; height: 45px;
+            background-color: #e6486c; color: #f2e5c5;
+            border: none; border-radius: .25em; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem; font-family:'Amiri', sans-serif; font-style: italic;
+            cursor: pointer; transition: transform .2s ease;
+        `;
+
+        toastbtn.addEventListener('mouseover', () => toastbtn.style.transform = 'scale(1.05)');
+        toastbtn.addEventListener('mouseleave', () => toastbtn.style.transform = 'scale(1)');
+        toastbtn.addEventListener('mousedown', () => toastbtn.style.transform = 'scale(0.85)');
+
+        // ← النص في عنصر منفصل حتى لا يُمسح الزر
+        const toastText = document.createElement('p');
+        toastText.textContent = message;
+
+        toast.appendChild(toastText);
+        toast.appendChild(toastbtn);
         document.body.appendChild(toast);
-        document.querySelector('main').style.filter = 'blur(5px)';
-        document.querySelector('header').style.filter = 'blur(5px)';
-        document.querySelector('#Head').style.filter = 'blur(5px)';
-        setTimeout(() => {
+
+        // Blur
+        const blurTargets = [
+            document.querySelector('main'),
+            document.querySelector('header'),
+            document.querySelector('#Head')
+        ];
+        blurTargets.forEach(el => el.style.filter = 'blur(5px)');
+
+        const closeToast = () => {
             toast.style.opacity = '0';
-            document.querySelector('main').style.filter = 'none';
-            document.querySelector('header').style.filter = 'none';
-            document.querySelector('#Head').style.filter = 'none';
+            blurTargets.forEach(el => el.style.filter = 'none');
             setTimeout(() => toast.remove(), 400);
-        }, 3000);
-    }
+        };
+
+        // إغلاق عند الضغط على الزر
+        toastbtn.addEventListener('click', () => {
+            this.disable_notifications();
+            closeToast();
+        });
+
+        // إغلاق تلقائي بعد 5 ثوانٍ
+        setTimeout(closeToast, 5000);
+        }
 
     disable_notifications() {
         localStorage.removeItem("notification-reminder");
         localStorage.removeItem("Wakeup");
         localStorage.removeItem("Bedtime");
-        this.showToast('تم إلغاء تفعيل التذكير.');
+        this.SwitchInput.checked = false;
+        this.showSwitch();
     }
 }

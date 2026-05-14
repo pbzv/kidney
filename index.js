@@ -1,4 +1,4 @@
-import { handleScroll, Liquid_ReminderApp } from "./functions.js";
+import { handleScroll, Liquid_ReminderApp } from "./modules/notify_app.js";
 
 const App = new Liquid_ReminderApp();
 handleScroll(document.querySelector('header'));
@@ -20,8 +20,8 @@ App.SwitchInput.addEventListener("change", () => {
         App.showSettings();
     } 
     else {
-        App.disable_notifications();
-        App.SwitchInput.checked = false;
+        App.SwitchInput.checked = true;
+        App.showToast('هل تريد إلغاء تفعيل التذكير؟');
     }
 });
 
@@ -31,17 +31,22 @@ App.RejectBtn.addEventListener('click', () => {
 
 App.SubmitBtn.addEventListener('click', () => {
     if (!App.WakeupTime.value || !App.Bedtime.value) {
-        alert('رجاءً قم بتحديد وقت الاستيقاظ ووقت النوم');
+        App.Error_msg.textContent = "رجاءً قم بتحديد وقت الاستيقاظ والنوم";
+        App.Error_msg.style.display = "block";
         return;
     }
-    localStorage.setItem("Wakeup", `${App.WakeupTime.value}`);
-    localStorage.setItem("Bedtime", `${App.Bedtime.value}`);
+
+    App.Error_msg.textContent = "";
+    App.Error_msg.style.display = "none";
+
+    localStorage.setItem("Wakeup", App.WakeupTime.value);
+    localStorage.setItem("Bedtime", App.Bedtime.value);
 
     App.obtainPermission().then(permission => {
         if (permission === 'granted') {
             App.Notify();
         }
+        App.SwitchInput.checked = true;
         App.showSwitch();
-        App.SwitchInput.querySelector("input").checked = true;
     });
 });

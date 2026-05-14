@@ -22,9 +22,9 @@
         <nav class="nav-menu">
             <ul>
                 <li><a href="#">الصفحة الرئسية</a></li>
-                <li><a href="#">الرسائل</a></li>
-                <li><a href="#">الحساب</a></li>
-                <li><a href="#">تسجيل الخروج</a></li>
+                <li><a href="messages.html">الرسائل</a></li>
+                <li><a href="account.html">الحساب</a></li>
+                <li><a href="login.html">تسجيل الخروج</a></li>
             </ul>
         </nav>
     </header>
@@ -61,14 +61,32 @@
                 <h1 class="title">التذكير بشرب السوائل</h1>
                 <div class="info">
                     <p class="alert">لتفعيل التذكير بشرب السوائل انقر الزر </p>
-                    
+                    <article class="reminder-settings">
+                        <section class="wakeup-time">
+                            <label for="wakeup">وقت الاستيقاظ</label>
+                            <input type="time" id="wakeuptime" name="wakeup" required>
+                        </section>
+                        <section class="bedtime">
+                            <label for="bedtime">وقت النوم</label>
+                            <input type="time" id="bedtime" name="bedtime" required>
+                        </section>
+                        <div class="buttons">
+                            <button class="reject-btn">
+                                <span>إلغاء</span>
+                            </button>
+                            <button class="submit-btn">
+                                <span>تفعيل التذكير</span>
+                            </button>
+                        </div>
+                    </article>
                     <label class="switch">
                         <input id="toggle" type="checkbox">
                         <span class="slider"></span>
                     </label>
+                    <p id="error_msg"></p>
                 </div>
             </div>
         </main>
-    <script src="index.js"></script>
+        <script type="module" src="index.js"></script>
     </body>
 </html>>

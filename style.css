@@ -135,8 +135,14 @@ header > .logo {
     transition: background 0.2s;
 }
 
+
 .nav-menu ul li a:hover {
     background: rgba(255, 255, 255, 0.1);
+    color: var(--main-textColour1);
+}
+
+.nav-menu ul li a[href="#"]{
+    font-size: 1.3rem;
     color: var(--main-textColour1);
 }
 
@@ -147,6 +153,7 @@ header > .logo {
     transform: translateY(0);
     pointer-events: auto;
 }
+
 
 #menu-toggle:checked ~ .menu-icon svg {
     transform: rotate(90deg);
@@ -267,6 +274,7 @@ header > .logo {
     height: 28px;
     margin-top: 1.75em;
     transform: scale(1.2);
+    opacity: 1;
 }
 
 /* hide default checkbox */
@@ -304,4 +312,126 @@ header > .logo {
 
 .switch input:checked + .slider::before {
     transform: translateX(22px);
+}
+
+.reminder-settings {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin-top: 2em;
+}
+
+
+label[for="wakeup"], label[for="bedtime"]{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--main-textColour1);
+    margin: .5em 0;
+}
+
+input[type="time"] {
+    width: 100%;
+    padding: .5em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.25em;
+    background-color: #002147;
+    color: #d4b48c;
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%) sepia(100%) grayscale(100%) brightness(150%);
+    cursor: pointer;
+}
+
+input[type="time"]::-webkit-datetime-edit {
+    cursor: text;
+}
+
+input[type="time"]:focus {
+    outline: none;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    margin: 1.25em 0;
+}
+
+.submit-btn {
+    width: 100px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #10ff83;
+    border-radius: 0.25em;
+    font-size: 1.2rem;
+    font-family: 'Amiri', sans-serif;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    transform: scale(1.075);
+}
+
+.submit-btn:active {
+    transform: scale(0.85);
+}
+
+.reject-btn {
+    width: 95px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #ff4c4c;
+    border-radius: 0.25em;
+    font-size: 1.2rem;
+    font-family: 'Amiri', sans-serif;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.reject-btn:hover {
+    transform: scale(1.075);
+}
+.reject-btn:active {
+    transform: scale(0.85);
+}
+
+.reminder-settings,
+.switch,
+.alert {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+
+.reminder-settings {
+    display: none;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    display: flex;
+}
+
+.switch.visible,
+.alert.visible {
+    display: inline-block;
 }

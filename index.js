@@ -3,15 +3,36 @@ import { handleScroll, Liquid_ReminderApp } from "./modules/notify_app.js";
 const App = new Liquid_ReminderApp();
 handleScroll(document.querySelector('header'));
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("notification-reminder") === "enabled") {
-        App.SwitchInput.checked = true;
-        App.SwitchLabel.classList.add('visible');
-        App.Alert_note.classList.add('visible');
-    } else {
-        localStorage.setItem("notification-reminder", "disabled");
-        App.SwitchInput.checked = false;
-        App.showSwitch();
+if (localStorage.getItem("notification-reminder") === "enabled") {
+    App.SwitchInput.checked = true;
+    App.SwitchLabel.classList.add('visible');
+    App.Alert_note.classList.add('visible');
+} else {
+    localStorage.setItem("notification-reminder", "disabled");
+    App.SwitchInput.checked = false;
+    App.showSwitch();
+}
+
+
+const MenuToggle = document.querySelector("#menu-toggle");
+const MenuIcon = document.querySelector(".menu-icon svg");
+const NavMenu = document.querySelector(".nav-menu");
+
+MenuToggle.addEventListener("change", () => {
+    if(MenuToggle.checked){
+        MenuIcon.classList.add("svg-checked");
+        NavMenu.classList.add("nav-menu-checked");
+        
+        document.addEventListener("click", (e) => {
+            if(MenuToggle.checked && !MenuIcon.contains(e.target) && !NavMenu.contains(e.target)){
+                MenuIcon.classList.remove("svg-checked");
+                NavMenu.classList.remove("nav-menu-checked");
+            }
+        });
+    }
+    else{
+        MenuIcon.classList.remove("svg-checked");
+        NavMenu.classList.remove("nav-menu-checked");
     }
 });
 
@@ -27,6 +48,7 @@ App.SwitchInput.addEventListener("change", () => {
 
 App.RejectBtn.addEventListener('click', () => {
     App.showSwitch();
+    App.SwitchInput.checked = false;
 });
 
 App.SubmitBtn.addEventListener('click', () => {

@@ -26,6 +26,7 @@ export class Liquid_ReminderApp {
     showSettings() {
         this.SwitchLabel.classList.remove('visible');
         this.Alert_note.classList.remove('visible');
+        this.Alert_note.style.display = 'none';
         setTimeout(() => {
             this.Settings.style.display = 'flex';
             requestAnimationFrame(() => {
@@ -40,6 +41,7 @@ export class Liquid_ReminderApp {
             this.Settings.style.display = 'none';
             this.SwitchLabel.classList.add('visible');
             this.Alert_note.classList.add('visible');
+            this.Alert_note.style.display = 'block';
         }, 400);
     }
 

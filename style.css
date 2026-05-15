@@ -27,14 +27,15 @@ body {
     display: flex;
     flex-direction: column;
     background: var(--main-theme);
+    background-repeat: no-repeat;
 }
 
+/*إعدادات شريط التمرير*/
 ::-webkit-scrollbar {
     width: .7em;
     background: linear-gradient(to top, #194138, rgb(11, 34, 37));
 }
 
-/* 3. Style the thumb (handle) */
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to top, #78ffd6, #007991);
     background-repeat: no-repeat;
@@ -79,8 +80,8 @@ header > .logo {
 }
 
 .menu-icon svg {
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     fill: var(--header-textColour);
     position: absolute;
     top: 2rem;
@@ -97,13 +98,13 @@ header > .logo {
     }
 }
 
-.menu-icon:hover svg {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10%;
-}
-
+/*القائمة المنسدلة*/
 .nav-menu {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     top: 5rem;
     left: 2rem;
     background: rgba(11, 34, 37);
@@ -146,7 +147,7 @@ header > .logo {
     color: var(--main-textColour1);
 }
 
-#menu-toggle:checked ~ .nav-menu {
+.nav-menu-checked {
     display: block;
     opacity: 1;
     visibility: visible;
@@ -154,10 +155,54 @@ header > .logo {
     pointer-events: auto;
 }
 
-
-#menu-toggle:checked ~ .menu-icon svg {
+.svg-checked {
     transform: rotate(90deg);
     fill: var(--main-textColour1);
+}
+
+.darkmode_switch {
+    position: relative;
+    left: -20px;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    margin: .75em;
+    margin-top: 1.5em;
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.darkmode_switch input {
+    display: none;
+}
+
+.darkmode_slider {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #777;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.darkmode_slider::before {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.darkmode_switch input:checked + .darkmode_slider {
+    background: #00da50;
+}
+
+.darkmode_switch input:checked + .darkmode_slider::before {
+    transform: translateX(22px);
 }
 
 #Head {
@@ -323,10 +368,9 @@ header > .logo {
     margin-top: 2em;
 }
 
-
 label[for="wakeup"], label[for="bedtime"]{
     display: block;
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
     color: var(--main-textColour1);
     margin: .5em 0;
 }
@@ -437,11 +481,12 @@ input[type="time"]:focus {
 }
 
 #error_msg {
+    display: none;
     position: relative;
     font-size: 1.4rem;
     font-family: 'Amiri', sans-serif;
     font-style: italic;
     color: #ff6868;
-    display: none;
     top: -30px;
+    text-align: center;
 }

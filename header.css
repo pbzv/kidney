@@ -1,0 +1,232 @@
+:root {
+    --main-theme: linear-gradient(120deg, #dfe7ef 50%, #99a6bd 100%) fixed;
+    --header-theme: rgb(11, 34, 37);
+    --card-theme: #eef3f7;
+
+    --header-textColour: #fafafa;
+    --main-textColour: #0e9297;
+    --secondary-textColour: #b8bfcb;
+}
+
+/*إعدادات شريط التمرير*/
+::-webkit-scrollbar {
+    width: .7em;
+    background: linear-gradient(to top, #194138, rgb(11, 34, 37));
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to top, #78ffd6, #007991);
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
+@media (max-width: 600px){
+    ::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.scrolled {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: rgba(238, 243, 247, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0px 7.5px 35px -5px rgba(50, 88, 130, 0.32);
+    animation: appear 0.5s ease-out;
+}
+
+
+header > .logo {
+    position: relative;
+    top: .4rem;
+    right: 1.2rem;
+    width: 6rem;
+    height: 6rem;
+    filter: contrast(110%) brightness(110%);
+}
+
+.menu-icon {
+    cursor: pointer;
+    z-index: 100;
+}
+
+.menu-icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: #71829e;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    transition: transform 0.3s ease;
+}
+
+@keyframes appear {
+    from {
+        transform: translateY(-70px);
+    }
+    to {
+        transform: translateY(0px);
+    }
+}
+
+/*القائمة المنسدلة*/
+.nav-menu {
+    position: absolute;
+    top: 5rem;
+    left: 2rem;
+    width: 200px;
+    transform: translateY(-10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #dce3ef;
+    border-radius: 0.5rem;
+    border: 0.5px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+    transition: 0.3s ease;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.nav-menu ul li > * {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1.45rem;
+    font-family: 'Amiri', sans-serif;
+    color: #394e6e;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.nav-menu ul li a[href="#"]{
+    font-size: 1.5rem;
+    color: var(--main-textColour);
+}
+
+.nav-menu-checked {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.svg-checked {
+    transform: rotate(90deg);
+    fill: var(--main-textColour);
+}
+
+.darkmode_note {
+    display: block;
+    position: relative;
+}
+
+.darkmode_switch {
+    position: relative;
+    display: inline-block;
+    top: -10px;
+    width: 50px;
+    height: 28px;
+    margin: 0.85em 1.5em;
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.darkmode_switch input {
+    display: none;
+}
+
+.darkmode_slider {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #acb8cc;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.darkmode_slider::before {
+    content: "";
+    position: absolute;
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.darkmode_switch input:checked + .darkmode_slider {
+    background: #0551a8;
+}
+
+.darkmode_switch input:checked + .darkmode_slider::before {
+    transform: translateX(22px);
+    background: #efd0aa;
+}
+
+#logout {
+    margin: 1em;
+    margin-top: 1.5em;
+    min-width: 85px;
+    min-height: 35px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 0.25em;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #ff4c4c;
+    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+#logout:hover {
+    transform: scale(1.05);
+}
+
+#logout:active {
+    transform: scale(0.85);
+}
+
+#logout > a {
+    text-decoration: none;
+    color: #e9e3e3;
+}
+
+#Head {
+    width: 100%;
+    padding-top: 4rem;
+    margin-bottom: 1em;
+    font-size: clamp(1.5rem, 5vw, 2.3rem);
+    font-style: italic;
+    font-family: 'Amiri', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#Head .main-header {
+    color: var(--main-textColour);
+}
+
+#Head .main-header-caption {
+    color: #71829e;
+}

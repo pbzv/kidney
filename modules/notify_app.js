@@ -1,8 +1,9 @@
-export function handleScroll(header) {
+export function handleScroll(header, darkmode) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 60) {
             header.classList.add('scrolled');
-        } else {
+        } 
+        else {
             header.classList.remove('scrolled');
         }
     });

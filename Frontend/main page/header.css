@@ -10,26 +10,7 @@
 
 /*إعدادات شريط التمرير*/
 ::-webkit-scrollbar {
-    width: .7em;
-    background: linear-gradient(to top, #194138, rgb(11, 34, 37));
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to top, #78ffd6, #007991);
-    background-repeat: no-repeat;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    cursor: grab;
-}
-
-::-webkit-scrollbar-thumb:active {
-    cursor: grabbing;
-}
-
-@media (max-width: 600px){
-    ::-webkit-scrollbar {
-        display: none;
-    }
+    display: none;
 }
 
 .scrolled {
@@ -213,7 +194,7 @@ header > .logo {
     width: 100%;
     padding-top: 4rem;
     margin-bottom: 1em;
-    font-size: clamp(1.5rem, 5vw, 2.3rem);
+    font-size: clamp(1.25rem, 5vw, 2rem);
     font-style: italic;
     font-family: 'Amiri', sans-serif;
     display: flex;

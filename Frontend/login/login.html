@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="theme">
+        <img src="/icons/logo-ministry-ar.png" class="ministry_logo">
+        <div class="login_form">
+            <h1 class="login_header">تسجيل الدخول</h1>
+            <div class="id_input">
+                <input type="text" id="email_input" placeholder="البريد الإلكتروني">
+                <label for="id" type="email">البريد الإلكتروني</label>
+            </div>
+            <button type="button" class="submitBtn">تسجيل الدخول</button>
+            <p id="error_msg"></p>
+        </div>
+        <div class="quotes">
+            <h3>عَلَى قَدْرِ أَهْلِ العَزْمِ</h3>
+            <h1>تَأتِي العَزائِمُ</h1>
+        </div>
+    </div>
+
+    <script>
+        const LoginInput = document.getElementById('email_input');
+        const SubmitBtn = document.querySelector('.submitBtn');
+        const ErrorMsg = document.getElementById('error_msg');
+
+        document.addEventListener('click', e => {
+            if(ErrorMsg.textContent && !document.querySelector('.login_form').contains(e.target)){
+                ErrorMsg.textContent = '';
+            }
+        });
+
+        SubmitBtn.addEventListener('click', () => {
+            try{
+                if(!LoginInput.value.trim()){
+                    throw new Error("الرجاء إدخال البريد الإلكتروني");
+                    return;
+                }
+                else{
+                    fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            input: LoginInput.value.trim()
+                    })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = data.redirect;
+                        } else {
+                            ErrorMsg.textContent = data.message;
+                        }
+                    })
+                    .catch(err => {
+                        ErrorMsg.textContent = err.message;
+                    });
+                }
+            }
+            catch(err){
+                ErrorMsg.textContent = err.message;
+            }
+        });
+    </script>
+</body>
+</html>

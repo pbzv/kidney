@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+    font-family: 'Zain';
+    src: url('/zain-font/zainmobileswashes-VF.ttf');
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    direction: rtl;
+    display: flex;
+    align-items: center;
+}
+
+.theme {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    overflow: hidden;
+}
+
+.theme::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    background: url('../icons/login_bg.png');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(80%);
+    z-index: 0;
+}
+
+.theme::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.1)
+    );
+    z-index: 1;
+}
+
+.ministry_logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1em;
+    width: 8em;
+    aspect-ratio: 1/1;
+    filter: brightness(0) invert(1);
+}
+
+.login_form {
+    width: min(450px, 90%);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba(29, 29, 29, 0.15);
+    backdrop-filter: blur(15px);
+    filter: contrast(105%);
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.login_header {
+    position: relative;
+    top: 15px;
+    padding: .05em;
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
+    font-family: 'Amiri', serif;
+    background: -webkit-linear-gradient(#eee 40%, #565656);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.id_input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    top: 25px;
+}
+
+label{
+    position: absolute;
+    margin: 1em;
+    margin-top: 20px;
+    margin-right: 0.45em;
+    font-size: 1.75rem;
+    font-family: 'Amiri', sans-serif;
+    font-style: italic;
+    color: grey;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+input {
+    direction: rtl;
+    width: 14em;
+    height: 2.5em;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.25);
+    background-color: transparent;
+    background-color: transparent;
+    font-size: 1.25rem;
+    color: #fafafa;
+    transition: border 0.2s ease-in, color 0.2s ease-in;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input:focus, input:not(:placeholder-shown){
+    font-weight: 600;
+    border-color: rgba(255, 255, 255, 0.5);
+    outline: none;
+    border-width: 2px;
+}
+
+input:focus ~ label, input:not(:placeholder-shown) ~ label{
+    transform: translateY(-35px);
+    color: rgba(242, 242, 242, 0.75);
+    font-size: 1.5rem;
+}
+
+.submitBtn {
+    position: relative;
+    top: 30px;
+    width: 7em;
+    aspect-ratio: 15/7;
+    font-size: 1.3rem;
+    font-family: 'Amiri';
+    color: #fafafa;
+    border: 3.25px solid rgba(242, 242, 242, 0.25);
+    border-radius: 5px;
+    background: rgba(242, 242, 242, 0.05);
+    backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.submitBtn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -70%;
+    transform: translate(-50%, -50%) rotateZ(120deg);
+    width: 30px;
+    height: 200px;
+    background-color: rgba(242, 242, 242, 0.45);
+    transition: left 0.5s ease;
+    z-index: -1;
+}
+
+.submitBtn:hover {
+    transform: scale(0.925);
+}
+
+.submitBtn:active {
+    transform: scale(0.8);
+}
+
+.submitBtn:hover::before {
+    left: 170%;
+}
+
+.quotes {
+    position: relative;
+    top: 75px;
+    padding: 2em;
+    font-family: 'Zain', serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 1;
+}
+
+.quotes h3 {
+    font-size: clamp(1.5rem, 2vw, 2.5rem);
+    font-weight: 400;
+}
+
+.quotes h1 {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 500;
+    line-height: 1;
+}
+
+#error_msg {
+    position: relative;
+    top: 15px;
+    font-size: clamp(1.5rem, 2.5vw + 1rem, 1.8rem);
+    font-family: 'Amiri', serif;
+    font-style: italic;
+    color: rgb(218, 53, 86);
+}
+
+@media(min-width: 1100px){
+    .theme {
+        justify-content: flex-start;
+        padding: 1rem;
+    }
+    .login_form {
+        width: 500px;
+        height: 650px;
+    }
+    input {
+        width: 17em;
+        border-width: 3px;
+    }
+    .submitBtn {
+        font-size: 1.5rem;
+    }
+    .quotes {
+        top: 100px;
+        right: 100px;
+    }
+}
+
+@media(max-width: 750px){
+    .ministry_logo {
+        width: 4em;
+    }
+    .quotes {
+        display: none;
+    }
+}

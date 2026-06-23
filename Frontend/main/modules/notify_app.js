@@ -1,14 +1,3 @@
-export function handleScroll(header, darkmode) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            header.classList.add('scrolled');
-        } 
-        else {
-            header.classList.remove('scrolled');
-        }
-    });
-}
-
 export class Liquid_ReminderApp {
     constructor() {
         this.SwitchLabel  = document.querySelector('.switch');
@@ -69,6 +58,14 @@ export class Liquid_ReminderApp {
         };
     }
 
+    disable_notifications() {
+        localStorage.removeItem("notification-reminder");
+        localStorage.removeItem("Wakeup");
+        localStorage.removeItem("Bedtime");
+        this.SwitchInput.checked = false;
+        this.showSwitch();
+    }
+
     showToast(message, color = '#a81638') {
         const toast = document.createElement('div');
         const toastbtn = document.createElement('button');
@@ -108,10 +105,9 @@ export class Liquid_ReminderApp {
         // Blur
         const blurTargets = [
             document.querySelector('main'),
-            document.querySelector('header'),
             document.querySelector('#Head')
         ];
-        blurTargets.forEach(el => el.style.filter = 'blur(5px)');
+        blurTargets.forEach(el => el.style.filter = 'blur(2px)');
 
         const closeToast = () => {
             toast.style.opacity = '0';
@@ -127,13 +123,5 @@ export class Liquid_ReminderApp {
 
         // إغلاق تلقائي بعد 5 ثوانٍ
         setTimeout(closeToast, 5000);
-        }
-
-    disable_notifications() {
-        localStorage.removeItem("notification-reminder");
-        localStorage.removeItem("Wakeup");
-        localStorage.removeItem("Bedtime");
-        this.SwitchInput.checked = false;
-        this.showSwitch();
     }
 }

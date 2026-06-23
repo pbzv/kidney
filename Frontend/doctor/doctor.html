@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="doctor.css">
+        <title>رفيق الكلى — لوحة الطبيب</title>
+    </head>
+    <body>
+        <div id="Head">
+            <h1 class="main-header">رَفِيقُ الكِلَى</h1>
+            <h1 class="main-header-caption">لوحة الطبيب</h1>
+        </div>
+
+        <section class="patient-intro">
+            <div class="patient-avatar">ع</div>
+            <div class="patient-meta">
+                <h2 class="patient-name">عنترة</h2>
+                <p class="patient-label">الملف الطبي للمريض الحالي</p>
+            </div>
+        </section>
+
+        <main class="cards">
+            <form class="card send-card" id="liquidCard">
+                <h1 class="title">كَمِّيَّةُ السَّوَائِلِ المَطْلُوبَة</h1>
+                <div class="info">
+                    <div class="field-row">
+                        <label for="liquidAmount">الكمية اليومية المطلوبة</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="liquidAmount" name="liquidAmount" min="0" step="0.1" placeholder="0.0">
+                            <span class="unit">لتر</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn send-btn"><span>إرسال</span></button>
+                </div>
+            </form>
+
+            <form class="card send-card" id="appointmentCard">
+                <h1 class="title">الجَلْسَةُ القَادِمَةُ</h1>
+                <div class="info">
+                    <div class="field-row">
+                        <label for="date">تاريخ الموعد</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="field-row">
+                        <label for="appointment">وقت الموعد</label>
+                        <input type="time" id="appointment" name="appointment">
+                    </div>
+                    <button type="submit" class="submit-btn send-btn">
+                        <span>إرسال</span>
+                    </button>
+                </div>
+            </form>
+
+            <form class="card send-card" id="prescriptionCard">
+                <h1 class="title">الوَصْفَةُ الطِّبِّيَّة</h1>
+                <div class="info">
+                    <div class="field-row">
+                        <label for="medicine">اسم الدواء</label>
+                        <input type="text" id="medicine" name="medicine" placeholder="مثال: Paracetamol">
+                    </div>
+                    <div class="field-row">
+                        <label for="dosage">الجرعة</label>
+                        <input type="text" id="dosage" name="dosage" placeholder="مثال: 500 ملغ">
+                    </div>
+                    <button type="submit" class="submit-btn send-btn"><span>إرسال</span></button>
+                </div>
+            </form>
+
+            <form class="card send-card" id="notesCard">
+                <h1 class="title">مُلَاحَظَاتُ الطَّبِيب</h1>
+                <div class="info">
+                    <div class="field-row">
+                        <label for="notes">الملاحظات / التشخيص</label>
+                        <textarea id="notes" name="notes" rows="4" placeholder="اكتب ملاحظاتك أو تشخيصك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn send-btn"><span>إرسال</span></button>
+                </div>
+            </form>
+        </main>
+
+        <div class="toast" id="toast"></div>
+        <script src="doctor.js"></script>
+    </body>
+</html>

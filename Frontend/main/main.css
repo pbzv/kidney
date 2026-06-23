@@ -8,6 +8,13 @@
     --header-textColour: #fafafa;
     --main-textColour: #0e9297;
     --secondary-textColour: #acb8cc;
+
+}
+
+@property --percentage {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
 }
 
 *, *::before, *::after {
@@ -26,96 +33,193 @@ body {
     background-size: cover;
 }
 
-.cards {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 5rem;
-    padding: 1rem;
-}
-
-.card {
-    padding: .75em;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 350px;
-    width: calc(90% - 2em);
-    min-height: 225px;
-    height: auto;
-    background: var(--card-theme);
-    border-radius: 0.5em;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0px 15px 35px -5px rgba(50, 88, 130, 0.32);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: scale(1.075);
-    /* box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05), 0 0 15px rgba(0, 0, 0, 0.35); */
-}
-
-
-.title {
-    margin: .25em;
-    margin-bottom: .75em;
-    position: absolute;
-    top: .25em;
-    align-self: flex-start;
-    font-size: clamp(1.85rem, 5vw, 2.4rem);
-    font-weight: 500;
+#Head {
+    width: 100%;
+    padding-top: 4rem;
+    margin-bottom: 1em;
+    font-size: clamp(1.25rem, 5vw, 2rem);
     font-style: italic;
-    color: var(--main-textColour);
-}
-
-.info {
-    position: relative;
+    font-family: 'Amiri', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    margin-top: 1.5rem;
+    text-align: center;
+
+    & .main-header {
+        color: var(--main-textColour);
+    }
+
+    & .main-header-caption {
+        color: #71829e;
+    }
 }
 
-.time-left {
+.cards {
+    margin: 5rem 0rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+
+    & .card {
+        width: 100%;
+        min-height: 240px;
+        padding: 1.5rem;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-between;
+
+        background: var(--card-theme);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        transition: all 0.25s ease;
+
+
+        & .title {
+            font-size: clamp(1.85rem, 8vw, 2.4rem);
+            font-weight: 500;
+            font-style: italic;
+            color: var(--main-textColour);
+            margin-bottom: 1rem;
+            text-align: right;
+        }
+
+        & .info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            & .time-left {
+                position: relative;
+                top: -15px;
+                font-size: clamp(2.25rem, 5vw, 2.75rem);
+                font-weight: 600;
+                color: var(--main-textColour); 
+            }
+
+            & .date, .dosage, .alert {
+                font-size: 1.5rem;
+                color: #71829e;
+            }
+
+            & .alert {
+                font-size: clamp(1.2rem, 5vw, 1.5rem);
+            }
+
+            & .medicine {
+                position: relative;
+                top: -15px;
+                font-size: clamp(1.8rem, 5vw, 2.2rem);
+                color: var(--main-textColour);
+            }
+
+            & .diagnosis {
+                position: relative;
+                top: -25px;
+                line-height: 1.5;
+                font-size: clamp(1.85rem, 8vw, 2rem);
+                color: #4e658e;
+                border-radius: 10px;
+            
+                white-space: pre-line;
+                text-align: center;
+            }
+        }
+    }
+
+    & .card:hover {
+        transform: translateY(-5px) scale(1.025);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+}
+
+
+.liquid-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#liquid {
+    max-width: 500px;
+    margin-inline: auto;
+}
+
+#liquid .title{
+    font-size: clamp(1.85rem, 8vw, 2.4rem);
+}
+
+.drink_percentage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 17.5rem;
+    height: 17.5rem;
+    border-radius: 50%;
+    background: conic-gradient(
+        #3ad4a1 0%,
+        #06b6d4 calc(var(--percentage) * 1%),
+        #e2e8f0 0
+    );
+    transition: --percentage 1.5s ease-in-out;
+}
+
+.drink_percentage::after {
+    content: '';
+    position: absolute;
+    width: 13.5rem;
+    height: 13.5rem;
+    z-index: 1;
+    background: #fff;
+    border-radius: inherit;
+}
+
+.drink_percentage > * {
+    z-index: 2;
+}
+
+.drink_percentage > span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.2rem;
+    font-style: italic;
+}
+
+.drink_percentage > .percentage {
     position: relative;
-    top: -15px;
-    font-size: clamp(2.25rem, 5vw, 2.75rem);
-    font-weight: 600;
-    color: var(--main-textColour); 
-}
-
-.date, .dosage, .alert {
-    font-size: 1.5rem;
+    top: 15px;
+    font-size: 1.75rem;
     color: #71829e;
 }
 
-.alert {
-    font-size: clamp(1.2rem, 5vw, 1.5rem);
+#drink_btn {
+    margin-top: 2em;
+    width: 6.5rem;
+    aspect-ratio: 15/7.5;
+    font-size: 1.2rem;
+    border-radius: 3px;
+    border: none;
+    background: #41da90;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.25),
+                0 0 25px #65cf9c;
+    transition: transform 0.2s ease;
 }
 
-.medicine {
-    position: relative;
-    top: -15px;
-    font-size: clamp(1.8rem, 5vw, 2.2rem);
-    color: var(--main-textColour);
+#drink_btn:hover {
+    transform: scale(1.1);
 }
 
-.diagnosis {
-    font-size: clamp(1.5rem, 5vw, 1.85rem);
-    color: var(--main-textColour);
-    text-align: center;
+#drink_btn:active {
+    transform: scale(0.95);
 }
 
-#alerts {
-    position: relative;
-    top: 5em;
-    margin-bottom: 10em;
-}
 
 .switch {
     position: relative;
@@ -132,7 +236,7 @@ body {
     display: none;
 }
 
-/* track */
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -142,7 +246,7 @@ body {
     transition: 0.3s;
 }
 
-/* knob */
+
 .slider::before {
     content: "";
     position: absolute;
@@ -155,7 +259,7 @@ body {
     transition: 0.3s;
 }
 
-/* ON state */
+
 .switch input:checked + .slider {
     background: #156874;
 }
@@ -186,8 +290,8 @@ input[type="time"] {
     padding: .5em;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0.25em;
-    background-color: #002147;
-    color: #d4b48c;
+    background-color: #dedede;
+    color: #156874;
     font-size: 1rem;
     font-family: monospace;
 }

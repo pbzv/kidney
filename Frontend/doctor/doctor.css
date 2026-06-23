@@ -1,0 +1,317 @@
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-theme: linear-gradient(120deg, #e6e3f7 50%, #a89cd6 100%);
+    --header-theme: rgb(30, 20, 55);
+    --card-theme: #f1eefb;
+
+    --main-textColour: #4b3aa8;
+    --secondary-textColour: #9d8fd6;
+
+    --doctor-accent: #795ce4;
+    --doctor-accent-dark: #4b3aa8;
+    --doctor-accent-light: #ede9fb;
+    --doctor-border: rgba(108, 79, 214, 0.22);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #f1f1f1;
+    padding: 0.5em;
+}
+
+main {
+    margin: 1.5rem 0;
+}
+
+#Head {
+    position: relative;
+    margin: .25em;
+    margin-bottom: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    font-size: 1.7rem;
+    font-family: 'Amiri', serif;
+    text-align: center;
+}
+
+#Head .main-header {
+    padding-top: 0.25em;
+    background: linear-gradient(135deg, #a999e2, var(--doctor-accent));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#Head .main-header-caption {
+    color: #a999e2;
+}
+
+#Head::before {
+    content: "وضع الطبيب";
+    display: inline-block;
+    padding: 0.5em 1.2em;
+    width: 100px;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    letter-spacing: 0.02em;
+    background: var(--doctor-accent);
+    color: #fff;
+    border-radius: 1000px;
+    margin-bottom: 0.85em;
+    box-shadow: 0 4px 14px -4px rgba(108, 79, 214, 0.5);
+}
+
+.patient-intro {
+    display: flex;
+    align-items: center;
+    gap: 1.1em;
+    max-width: 500px;
+    width: calc(90% + 0.5em);
+    margin: 0 auto 2.5rem;
+    padding: 1.1em 1.4em;
+    background: var(--card-theme);
+    border: 1px solid var(--doctor-border);
+    border-radius: 0.75em;
+    box-shadow: 0px 15px 35px -5px rgba(75, 58, 168, 0.22);
+}
+
+.patient-avatar {
+    flex-shrink: 0;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--doctor-accent), #9d8fd6);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Amiri', serif;
+    box-shadow: 0 0 0 4px #fff, 0 4px 12px -2px rgba(108, 79, 214, 0.4);
+}
+
+.patient-meta { display: flex; flex-direction: column; gap: 0.15em; }
+
+.patient-name {
+    font-size: 1.6rem;
+    font-family: 'Amiri', serif;
+    font-style: italic;
+    color: var(--main-textColour);
+    line-height: 1.2;
+}
+
+.patient-label {
+    font-size: 0.9rem;
+    color: var(--secondary-textColour);
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5rem;
+}
+
+.send-card .title {
+    margin-bottom: .25em;
+    font-size: 2.2rem;
+    font-family: 'Amiri', serif;
+    color: #9d8fd6;
+}
+
+.send-card .info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.field-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45em;
+    margin-bottom: 1.1em;
+    text-align: right;
+}
+
+.field-row label {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--doctor-accent-dark);
+
+}
+
+.send-card input[type="text"],
+.send-card input[type="number"],
+.send-card input[type="date"],
+.send-card input[type="time"],
+.send-card textarea {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--doctor-border);
+    border-radius: 0.5em;
+    padding: 0.7em 0.9em;
+    font-size: 1rem;
+    font-family: 'Amiri', 'Tahoma', serif;
+    color: var(--header-theme);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.send-card input::placeholder,
+.send-card textarea::placeholder {
+    color: var(--secondary-textColour);
+    font-style: italic;
+    opacity: 0.85;
+}
+
+.send-card input:focus,
+.send-card textarea:focus {
+    border-color: var(--doctor-accent);
+    box-shadow: 0 0 0 3px rgba(108, 79, 214, 0.15);
+}
+
+.send-card input:hover,
+.send-card textarea:hover {
+    border-color: #b9adde;
+}
+
+.send-card textarea {
+    resize: vertical;
+    min-height: 5.5em;
+    line-height: 1.6;
+}
+
+.input-with-unit {
+    display: flex;
+    align-items: stretch;
+    border: 1.5px solid var(--doctor-border);
+    border-radius: 0.5em;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-with-unit:focus-within {
+    border-color: var(--doctor-accent);
+    box-shadow: 0 0 0 3px rgba(108, 79, 214, 0.15);
+}
+
+.input-with-unit input[type="number"] {
+    border: none;
+    box-shadow: none;
+    flex: 1;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+.input-with-unit input[type="number"]:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.input-with-unit .unit {
+    display: flex;
+    align-items: center;
+    padding: 0 1.1em;
+    background: var(--doctor-accent-light);
+    color: var(--doctor-accent-dark);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-right: 1.5px solid var(--doctor-border);
+}
+
+.send-card input[type="number"]::-webkit-inner-spin-button,
+.send-card input[type="number"]::-webkit-outer-spin-button {
+    opacity: 0.45;
+}
+
+.send-card input[type="date"],
+.send-card input[type="time"] {
+    color: var(--header-theme);
+    font-family: 'Tahoma', monospace;
+    cursor: pointer;
+}
+
+.send-card input[type="date"]::-webkit-calendar-picker-indicator,
+.send-card input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(28%) sepia(45%) saturate(1500%) hue-rotate(230deg) brightness(90%);
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+}
+
+.send-card input[type="date"]:hover::-webkit-calendar-picker-indicator,
+.send-card input[type="time"]:hover::-webkit-calendar-picker-indicator {
+    opacity: 1;
+}
+
+
+.send-btn {
+    margin-top: 0.4em;
+    width: min(400px, 90%);
+    height: 50px;
+    font-size: 1.1rem;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background: var(--doctor-accent);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), 0 0 20px rgba(108, 79, 214, 0.5);
+    align-self: center;
+    transition: all 0.2s ease;
+}
+
+.send-btn:hover { background: var(--doctor-accent-dark); transform: scale(1.03); }
+.send-btn:active { transform: scale(0.96); }
+
+/* حالة تأكيد مؤقتة عند الإرسال الناجح */
+.send-btn.sent {
+    background: #2fa56b;
+    box-shadow: 0 0 10px rgba(47, 165, 107, 0.35);
+}
+
+.send-btn.err {
+    background: #a52f37;
+    box-shadow: 0 0 10px rgba(165, 47, 84, 0.35);
+}
+
+.toast {
+    position: fixed;
+    bottom: 1.75rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--header-theme);
+    color: #fff;
+    padding: 0.7em 1.5em;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-family: 'Amiri', serif;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.3);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 480px) {
+    .patient-intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.6em;
+    }
+}

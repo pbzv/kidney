@@ -1,5 +1,39 @@
 import { Liquid_ReminderApp } from "./modules/notify_app.js";
 
+const MenuToggle = document.querySelector("#menu-toggle");
+const MenuIcon = document.querySelector(".menu-icon svg");
+const NavMenu = document.querySelector(".nav-menu");
+
+MenuToggle.addEventListener("change", () => {
+    if(MenuToggle.checked){
+        MenuIcon.classList.add("svg-checked");
+        NavMenu.classList.add("nav-menu-checked");
+        
+        document.addEventListener("click", (e) => {
+            if(MenuToggle.checked && !MenuIcon.contains(e.target) && !NavMenu.contains(e.target)){
+                MenuIcon.classList.remove("svg-checked");
+                NavMenu.classList.remove("nav-menu-checked");
+            }
+        });
+    }
+    else{
+        MenuIcon.classList.remove("svg-checked");
+        NavMenu.classList.remove("nav-menu-checked");
+    }
+});
+
+const logoutBtn = document.getElementById("logout");
+logoutBtn.onclick = function(){
+    fetch("/logout", {
+        method: "POST",
+        credentials: "include"
+    }).then(() => {
+        localStorage.clear();
+        window.location.reload();
+    });
+}
+
+
 function getToday(){
     return new Date().toISOString().split("T")[0];
 }

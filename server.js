@@ -145,6 +145,18 @@ app.post('/login', (req, res) => {
     });
 });
 
+app.post('/logout', (req, res) => {
+    res.clearCookie("userId", {
+        httpOnly: true,
+        sameSite: "strict",
+    });
+
+    return res.json({
+        success: true,
+        redirect: "/"
+    });
+})
+
 app.post('/report', (req, res) => {
     const report = req.body;
     console.log(report);
